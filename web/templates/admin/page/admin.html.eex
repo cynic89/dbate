@@ -1,0 +1,49 @@
+<div ng-app = "admin">
+<input type="hidden" id="ba_cred" value="<%= @ba_cred %>"></input>
+  <div ng-controller = "mainCtrl" class="container">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <td> Hosts </td>
+          <td> Name </td>
+            <td> Email </td>
+              <td> phone </td>
+                <td> Action </td>
+                  <td> Publisher Id </td>
+              </tr>
+      </thead>
+
+      <tr ng-repeat='pubReq in pubRequests'>
+        <td> {{pubReq.hosts}} </td>
+        <td> {{pubReq.name}} </td>
+          <td> {{pubReq.email}} </td>
+            <td> {{pubReq.phone}} </td>
+
+              <td>
+                <span ng-show="pubReq.status=='Approved'" class="label label-success">Approved</span>
+                <button ng-click='approve(pubReq)' ng-show="pubReq.status=='Submitted'"
+                class="btn btn-default btn-sm">Approve</button>
+                </td>
+                <td> {{pubReq.pub_id}} </td>
+      </tr>
+    </table>
+
+<button class="btn btn-default" ng-click = 'more()' ng-hide="lastPage">More</button>
+<div><span style="text-align: center" ng-show="lastPage">{{msg}}</span></div>
+
+<div class="overlay" ng-show="pendingResp">
+    <div class="cs-loader">
+      <div class="cs-loader-inner">
+        <label>	●</label>
+        <label>	●</label>
+        <label>	●</label>
+        <label>	●</label>
+        <label>	●</label>
+        <label>	●</label>
+      </div>
+    </div>
+</div>
+
+  </div>
+</div

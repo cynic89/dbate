@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Shyam">
+    <meta name="google-signin-client_id" content="486302302918-ng3vlnk8h0jvr5j8ccl6cun9pbqlmh0u.apps.googleusercontent.com">
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Naarud</title>
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <link rel="shortcut icon" href="images/icon.png" />
+  </head>
+  <body>
+
+
+
+        <%= render @view_module, @view_template, assigns %>
+
+
+    <div class="container container-cus" style="overflow:hidden">
+    <div class="row " id="div-toast" hidden="true">
+      <div class="col-xs-12 col-sm-10 col-md-8" style="margin:10px">
+      <div class="bottom">
+  <div id="toast-text" class="col-xs-10 col-md-8 toast"></div>
+  </div>
+  </div>
+  </div>
+</div>
+  </body>
+</html>

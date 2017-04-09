@@ -1,0 +1,24 @@
+<div class="row" ng-show="post.stance =='for'">
+  <div class="col-md-8 col-xs-11 for">
+
+    <div class="avatar avatar-left">
+      <img src="images/kb_warrior.png" ng-src= {{post.author.image_url}} class="avatr-img" alt="Not Found">
+    </div>
+
+      <div class="txt-left-mar">
+        <span class="author">{{post.author.name}} </span>
+        <span class="date-time">{{post.created_at | dateFormat}} </span>
+      </div>
+
+
+      <div class="txt-left-mar">{{post.body}}</div>
+
+      <div class="flt-left-mar">
+        <button type="button" class="btn-vote" ng-click="vote(post)" ng-class='post.voted ? "btn-voted" : "btn-vote-for"' ng-disabled='post.voted'>
+          <i class="fa fa-hand-o-right"></i>
+        </button>
+        <span class="vote" ng-show='post.votes > 0'>{{post.votes}}</span>
+      </div>
+
+    </div>
+  </div>

@@ -1,0 +1,31 @@
+<div class="row" ng-show="post.stance=='against'">
+  <div class="col-md-4 col-xs-1"></div>
+  <div class="col-md-8 col-xs-11 against" style="float: right">
+
+    <div class="">
+
+      <div class="avatar avatar-right">
+        <img src="images/kb_warrior.png" ng-src= {{post.author.image_url}} class="avatr-img" alt="Not Found">
+      </div>
+
+      <div class="text-right txt-right-mar">
+        <span class="date-time text-right">{{post.created_at | dateFormat}} </span>
+        <span class="text-right author">{{post.author.name}} </span>
+      </div>
+
+      <div class="text-right txt-right-mar">
+        {{post.body}}
+      </div>
+
+      <div class="flt-right-mar" >
+        <span class="vote text-right" ng-show='post.votes > 0'>{{post.votes}}</span>
+        <button type="button" class="btn-vote" ng-click="vote(post)" ng-class='post.voted ? "btn-voted" : "btn-vote-against"' ng-disabled='post.voted'>
+          <i class="fa fa-hand-o-left"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

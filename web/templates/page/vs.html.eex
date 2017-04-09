@@ -1,0 +1,154 @@
+
+<div ng-app="dbate" style="background-color: white">
+<div class="container container-cus" ng-controller="mainCtrl">
+  <input type="hidden" id="pubId" value="<%= @publisher %>"></input>
+  <input type="hidden" id="userIdSvr" value="<%= user_id @conn %>"></input>
+
+<div ng-controller="userCtrl">
+  <!-- Login -->
+
+<div class="row">
+    <button class="btn btn-sm btn-dbate brand-btn">
+    <span class=""> <i class="fa fa-balance-scale"></i>
+
+    &nbsp;N a a r u d</span></button>
+  <div class="" style="float: right; display: inline">
+    <!-- login button -->
+      <button type="button" class="btn btn-primary btn-login btn-dbate"  data-toggle="modal" data-target="#loginPopup"
+      ng-hide="isUserLoggedIn()">
+        <span> Hey, Let me in </span>
+      </button>
+
+      <!-- logoff button -->
+        <button type="button" class="btn btn-warning btn-logoff btn-dbate" ng-show='isUserLoggedIn()' ng-click="logoff()">
+          <span> Nah, I'll just Listen </span>
+        </button>
+</div>
+</div>
+  <!-- weigh scale -->
+  <div class="row">
+    <div class="col-md-4 col-xs-4"></div>
+    <div class="col-md-3 col-xs-3">
+    <img class="ws-img" src = "images/ws/ws_eq.svg" ng-src= {{balanceImg}} >
+    </div>
+
+  </div>
+
+
+    <!-- Login Popup -->
+    <!-- <ng-include src="'partials/login_popup.html'"></ng-include> -->
+
+    <div id="loginPopup" class = "modal fade" role="dialog">
+
+        <div class = "modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Login</h4>
+          </div>
+            <div class="modal-body">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-7 text-center">
+              <a class="btn btn-block btn-social btn-lg btn-facebook sharp-edge" onclick="checkLoginState();">
+             <span class="fa fa-facebook"></span>
+             Sign in with Facebook
+           </a>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-7 socl-sep">
+          <span>or</span>
+        </div>
+        </div>
+
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-7">
+              <a id = "googleSignInBtn" class="btn btn-block btn-social btn-lg btn-google sharp-edge" >
+             <span class="fa fa-google"></span>
+             Sign in with Google
+           </a>
+          </div>
+        </div>
+
+        <div class="row error-div">
+          <span id = "login-error" class="error-text"></span>
+        </div>
+      </div>
+
+        <div class="modal-footer">
+                <button id="modal-exit-btn" type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
+        </div>
+
+      </div>
+    </div>
+      </div>
+
+
+    <!-- User actions -->
+<div class = "row">
+  <!-- profile pic -->
+
+  <div class="col-md-2 col-xs-1 avatar">
+    <img src= "images/kb_warrior.png" ng-src= {{getImageUrl()}} class="avatr-img" alt="Not Found">
+  </div>
+  <!-- Message input -->
+  <form name="msgForm">
+  <div class="col-md-9 col-xs-10 input-container">
+  <div class="row">
+    <div contenteditable="true" class= "col-md-12 col-xs-12 input-text-content"  id="msgText"
+    title="  What are you waiting for. Type something." ng-model="userPost.body">
+    </div>
+</div>
+    <!-- stance -->
+    <div class="row" style="background-color: #f7f7f9">
+    <div class = "input-footer" style="overflow: hidden">
+    <div class="col-md-2 col-xs-3" style="text-align: center ; vertical-align: middle">
+      <stance type='for' btn-hint='For' btn-Img='images/btn_for_w.png' curr='stance'></stance>
+    </div>
+    <div class="col-md-2 col-xs-3" style="text-align: center">
+      <stance type='against' btn-hint='Against' btn-Img='images/btn_against_w.png' curr='stance'></stance>
+    </div>
+    <div class="col-md-2 col-xs-3" style="text-align: center; vertical-align: middle">
+      <stance type='equi' btn-hint='Equi' btn-icon = 'fa fa-flag' curr='stance'></stance>
+    </div>
+
+    <!-- send button -->
+    <div class="col-md-3 hidden-xs"></div>
+    <div class="col-md-2 col-xs-2">
+    <button type="button" class="btn btn-primary btn-dbate " ng-disabled="!allowPost() || msgForm.$invalid" ng-click="send()" >
+        Post
+    </button>
+    <span style="text:center" ng-class="maxPostLength - userPost.body.trim().length<0? 'error-text':''">
+      {{maxPostLength - userPost.body.trim().length}}</span>
+    </div>
+
+    </div>
+  </div>
+
+
+</div>
+</form>
+
+
+</div>
+</div>
+
+ <div ng-controller="postsCtrl">
+  <div ng-repeat="post in posts" class="post">
+     <post> </post>
+
+</div>
+<div style="width:20%; margin: 0 auto">
+<button type="button" class="btn btn-default btn-more" ng-click="more()" > more</button>
+<div>
+</div>
+
+</div>
+</div>
+</div>
+</div>

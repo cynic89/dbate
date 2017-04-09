@@ -1,0 +1,18 @@
+defmodule Dbate.Repo do
+   use Ecto.Repo, otp_app: :dbate, adapter: Mongo.Ecto
+   
+def paginate(query, %{page: page_num}) do
+	ent = entries(query, __MODULE__, page_num, 20)
+	%{entries: ent}
+end
+
+defp entries(query, repo, page_number, page_size) do
+    offset = page_size * (page_number - 1)
+
+    query
+    |> limit(^page_size)
+    |> offset(^offset)
+    |> repo.all
+  end
+
+end

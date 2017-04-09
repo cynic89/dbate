@@ -1,0 +1,49 @@
+<div id="loginPopup" class = "modal fade" role="dialog">
+
+    <div class = "modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Login</h4>
+      </div>
+        <div class="modal-body">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-7 text-center">
+          <a class="btn btn-block btn-social btn-lg btn-facebook sharp-edge" onclick="checkLoginState();">
+         <span class="fa fa-facebook"></span>
+         Sign in with Facebook
+       </a>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-md-7 socl-sep">
+      <span>or</span>
+    </div>
+    </div>
+
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-7">
+          <a id = "googleSignInBtn" class="btn btn-block btn-social btn-lg btn-google sharp-edge" >
+         <span class="fa fa-google"></span>
+         Sign in with Google
+       </a>
+      </div>
+    </div>
+
+    <div class="row error-div">
+      <span id = "login-error" class="error-text"></span>
+    </div>
+  </div>
+
+    <div class="modal-footer">
+            <button id="modal-exit-btn" type="button" class="btn btn-default" data-dismiss="modal">Exit</button>
+    </div>
+
+  </div>
+</div>
+  </div>

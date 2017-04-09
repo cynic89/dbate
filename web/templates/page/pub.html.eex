@@ -1,0 +1,89 @@
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top"  ng-app="naradPub" ng-controller="pubCtrl">
+
+  <div class="container">
+    <form class="form-horizontal tpad" name="pubForm">
+      <div class="form-group">
+        <label for="pubId" class="col-md-3 control-label">Publisher Id: </label>
+        <div class="col-md-6">
+          <input type="text" class="form-control sharp-edge" id="pubId" name="pubId" placeholder="Publisher Id"
+            ng-model='pub.id' required>
+
+          <div ng-show="pubForm.$submitted || pubForm.pubId.$touched">
+            <div ng-show="pubForm.pubId.$error.required" class="error-txt">Publisher cannot be left empty</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="col-md-3 control-label">Password: </label>
+        <div class="col-md-6">
+          <input type="password" class="form-control sharp-edge" id="password" placeholder="Password" name="password"
+          ng-model='pub.secret' required>
+
+          <div ng-show="pubReqForm.$submitted || pubReqForm.password.$touched">
+            <span ng-show="pubReqForm.password.$error.required" class="error-txt">Please enter a password
+          </span>
+
+          </div>
+
+        </div>
+        </div>
+
+
+      <div class="form-group" style="margin-top:30px">
+        <div class="col-xs-5"></div>
+        <div class="col-xs-6">
+          <button class="btn btn-primary" ng-click="getTopics()" ng-disabled="pubReqForm.$invalid">Submit</button>
+        </div>
+      </div>
+  </div>
+
+  <div class="container"><span class="error-text">{{error}}</span></div>
+
+  <div class="container">
+      <div class="row">
+        <div class="col-xs-3">
+            <table class="table table-bordered">
+              <tr><th>Topics</th></tr>
+              <tr ng-repeat = "topic in topics">
+                <td><span><a href="" ng-click="getPosts(topic.path)">{{topic.path}}</a></span></td>
+              </tr>
+            </table>
+        </div>
+        <div class="col-xs-9">
+            <table class="table">
+                <tr>
+                  <th>Post</th>
+                  <th>Author</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                <tr ng-repeat="post in posts">
+                  <td>{{post.body}}</td>
+                  <td>{{post.author.name}}</td>
+                  <td>{{post.is_active}}</td>
+                  <td>
+                    <span ng-show="!post.is_active" class="label label-success">Removed</span>
+                    <button ng-click='removePost(post)' ng-show="post.is_active"
+                    class="btn btn-default btn-sm">Remove</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+      </div>
+  </div>
+
+    <div class="overlay" ng-show="pendingResp">
+        <div class="cs-loader">
+          <div class="cs-loader-inner">
+            <label>	●</label>
+            <label>	●</label>
+            <label>	●</label>
+            <label>	●</label>
+            <label>	●</label>
+            <label>	●</label>
+          </div>
+        </div>
+    </div>
+
+</body>
